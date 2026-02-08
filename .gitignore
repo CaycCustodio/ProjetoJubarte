@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+.venv/
+
+# Database
+*.db
+*.sqlite3
+
+# Reports/Generated files
+*.xlsx
+*.pdf
+
+# AI Kit (Opcional, mas recomendado ignorar metadados locais)
+.agent/
+.gemini/
+
+# Environment
+.env

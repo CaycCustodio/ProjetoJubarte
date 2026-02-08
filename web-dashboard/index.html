@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jubarte Finance - Core Engine 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+    <div class="glass-orb orb-1"></div>
+    <div class="glass-orb orb-2"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">🐋</span>
+            <span class="logo-text">Jubarte<span class="accent">Finance</span></span>
+        </div>
+        <div class="nav-status">
+            <span class="status-dot"></span> Core Engine 2026 v1.0
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <header class="hero">
+            <h1>Arquitetura Financeira <span class="gradient-text">Premium</span></h1>
+            <p>Simulador de Engenharia Financeira e Gestão CLT com precisão matemática absoluta.</p>
+        </header>
+
+        <section class="grid">
+            <!-- Calculadora CLT -->
+            <div class="card glass">
+                <div class="card-header">
+                    <h3>Calculadora CLT 2026</h3>
+                    <span class="badge">Reforma Tributária</span>
+                </div>
+                <div class="input-group">
+                    <label>Salário Bruto (R$)</label>
+                    <input type="number" id="input-bruto" value="8000" step="100">
+                </div>
+                <div class="input-group">
+                    <label>Dependentes</label>
+                    <input type="number" id="input-dep" value="1">
+                </div>
+                <div class="actions-grid">
+                    <button class="btn btn-primary" onclick="downloadReport()">
+                        <span class="icon">📄</span> Baixar Relatório Excel
+                    </button>
+                </div>
+                <div class="results-list" id="results-clt">
+                    <div class="result-item">
+                        <span>INSS (2026)</span>
+                        <span class="value" id="val-inss">- R$ 0,00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>IRRF (Isenção 5k)</span>
+                        <span class="value" id="val-irrf">- R$ 0,00</span>
+                    </div>
+                    <div class="result-item total">
+                        <span>Salário Líquido</span>
+                        <span class="value highlight" id="val-liquido">R$ 0,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evolução de Investimento -->
+            <div class="card glass chart-card">
+                <div class="card-header">
+                    <h3>Evolução Patrimonial</h3>
+                    <div class="chart-controls">
+                        <button class="btn btn-sm active" onclick="updateChart('juros')">Juros</button>
+                        <button class="btn btn-sm" onclick="updateChart('amortizacao')">Amortização</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mainChart"></canvas>
+                </div>
+
+                <!-- Tabela de Investimento 10 Anos -->
+                <div class="investment-table-container">
+                    <h4>Plano de Liberdade (10 Anos - 20% do Salário Líquido)</h4>
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th>Ano</th>
+                                <th>Investido Acum.</th>
+                                <th>Juros Gerados</th>
+                                <th>Patrimônio Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="investment-body">
+                            <!-- Injetado via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ROI & Business -->
+            <div class="card glass">
+                <div class="card-header">
+                    <h3>Indicadores Business</h3>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="label">Break-even</span>
+                        <span class="value" id="val-be">R$ 62.500</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="label">Custo Real (Empresa)</span>
+                        <span class="value" id="val-custo-emp">R$ 11.752</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Margem de Contribuição</span>
+                        <span>40%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Correção Monetária -->
+            <div class="card glass">
+                <div class="card-header">
+                    <h3>Correção Monetária</h3>
+                    <span class="badge">Projeção 2030</span>
+                </div>
+                <div class="input-group">
+                    <label>Valor Base (R$)</label>
+                    <input type="number" id="input-base-corr" value="5000">
+                </div>
+                <div class="input-group">
+                    <label>Indexador</label>
+                    <select id="input-indexador" class="glass-select">
+                        <option value="minimo">Salário Mínimo (+4% a.a.)</option>
+                        <option value="inflacao" selected>Inflação / IPCA (3.9% a.a.)</option>
+                        <option value="igpm">IGP-M (6% a.a.)</option>
+                    </select>
+                </div>
+                <div class="results-list">
+                    <div class="result-item">
+                        <span>Poder de Compra Real</span>
+                        <span class="value highlight" id="val-corrigido">R$ 5.980,00</span>
+                    </div>
+                    <p class="hint">Simulação de valor corrigido após 4 anos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Jubarte Finance Engine. Projetado para Precisão e Estética.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
